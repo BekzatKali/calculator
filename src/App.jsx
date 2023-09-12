@@ -30,7 +30,7 @@ export default function Calculator() {
         } else if (value !== 0 && calculatorData === "0") {
           setCalculatorData(`${value}`)
           setInput(`${value}`)
-        } else {
+        } else { 
           const lastChat = calculatorData.charAt(calculatorData.length - 1);
           const isLastChatOperator = operators.includes(lastChat)
           setInput(isLastChatOperator ? `${value}` : `${input}${value}`)
@@ -54,7 +54,7 @@ export default function Calculator() {
 
         if (isLastChatOperator) {
           setInput("0.")
-          setCalculatorData(`${calculatorData} 0.`)
+          setCalculatorData(`${calculatorData}0.`)
         } else {
           setInput(input.includes(".") ? `${input}` : `${input}.`)
           setCalculatorData(input.includes(".") ? `${calculatorData}` : `${calculatorData}.`)
