@@ -20,24 +20,47 @@ export default function Calculator() {
 
     
 
+    // const handleNumbers = (value) => {
+    //   if (!calculatorData.length) {
+    //     setInput(`${value}`)
+    //     setCalculatorData(`${value}`)
+    //   } else {
+    //     if (value === 0 && calculatorData === "0") {
+    //       setCalculatorData("0")  
+    //     } else if (value !== 0 && calculatorData === "0") {
+    //       setCalculatorData(`${value}`)
+    //       setInput(`${value}`)
+    //     } else { 
+    //       const lastChat = calculatorData.charAt(calculatorData.length - 1);
+    //       const isLastChatOperator = operators.includes(lastChat)
+    //       setInput(isLastChatOperator ? `${value}` : `${input}${value}`)
+    //       setCalculatorData(`${calculatorData}${value}`)
+    //     }
+    //   }
+    // }
     const handleNumbers = (value) => {
-      if (!calculatorData.length) {
-        setInput(`${value}`)
-        setCalculatorData(`${value}`)
-      } else {
-        if (value === 0 && calculatorData === "0") {
-          setCalculatorData("0")  
-        } else if (value !== 0 && calculatorData === "0") {
-          setCalculatorData(`${value}`)
+      if (input !== 'DIGIT LIMIT MET') {
+        if (!calculatorData.length) {
           setInput(`${value}`)
-        } else { 
-          const lastChat = calculatorData.charAt(calculatorData.length - 1);
-          const isLastChatOperator = operators.includes(lastChat)
-          setInput(isLastChatOperator ? `${value}` : `${input}${value}`)
-          setCalculatorData(`${calculatorData}${value}`)
+          setCalculatorData(`${value}`)
+        } else {
+          if (value === 0 && calculatorData === "0") {
+            setCalculatorData("0")  
+          } else if (value !== 0 && calculatorData === "0") {
+            setCalculatorData(`${value}`)
+            setInput(`${value}`)
+          } else if (input.length === 22 && input.split('').every(char => typeof parseInt(char) === 'number')) {
+              setInput('DIGIT LIMIT MET')
+          } else { 
+            const lastChat = calculatorData.charAt(calculatorData.length - 1);
+            const isLastChatOperator = operators.includes(lastChat)
+            setInput(isLastChatOperator ? `${value}` : `${input}${value}`)
+            setCalculatorData(`${calculatorData}${value}`)
+          }
         }
       }
     }
+      
 
     
 
